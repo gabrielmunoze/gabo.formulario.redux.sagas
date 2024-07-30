@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TextField, Button, Container } from '@mui/material';
-import { saveValue } from './store/reducer';
+import { saveValue } from './store/actions';
 import { RootState } from './store';
 import { FormData } from './store/types';
 

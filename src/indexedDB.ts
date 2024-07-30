@@ -1,5 +1,5 @@
 import { openDB } from 'idb';
-import { FormData } from './store/types';
+import { FormData } from './main/store/types';
 
 const dbPromise = openDB('MyDatabase', 1, {
   upgrade(db) {

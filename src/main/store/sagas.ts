@@ -1,7 +1,7 @@
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { saveValue } from './actions';
 import { saveValueSuccess } from './reducer';
-import { addValue } from '../indexedDB';
+import { addValue } from '../../indexedDB';
 import { FormData } from './types';
 
 function* saveValueSaga(action: ReturnType<typeof saveValue>): Generator {

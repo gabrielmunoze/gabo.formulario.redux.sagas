@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
 import { createAction, createReducer, PayloadAction } from '@reduxjs/toolkit';
 import { FormData, FormState } from './types';
+import { saveValue, saveValueSuccess } from './actions';
 
 
-export const saveValue = createAction<FormData>('SAVE_VALUE');
-export const saveValueSuccess = createAction<FormData>('SAVE_VALUE_SUCCESS');
+// export const saveValue = createAction<FormData>('SAVE_VALUE');
+// export const saveValueSuccess = createAction<FormData>('SAVE_VALUE_SUCCESS');
 
 const initialFormState: FormState = {
   value: null,

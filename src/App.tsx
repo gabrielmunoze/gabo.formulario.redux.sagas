@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import store from './store';
-import FormComponent from './FormComponent';
+import store from './main/store';
+import FormComponent from './main';
 
 const App: React.FC = () => {
   return (
