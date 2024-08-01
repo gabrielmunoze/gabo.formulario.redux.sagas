@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TextField, Button, Container } from '@mui/material';
+import { FormDataModel } from './store/types';
+import { formSelector, saveValueActionSelector } from './store/selectors';
 import { saveValue } from './store/actions';
-import { RootState } from './store';
-import { FormData } from './store/types';
-import  ListDB  from './component/listDB'
+import ListDB from './listDB';
+import { ActionStatus } from '../../../store';
+
 
 const FormComponent: React.FC = () => {
   
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormDataModel>({
     nombre: '',
     apellido: '',
     correo: '',
@@ -18,7 +20,9 @@ const FormComponent: React.FC = () => {
   });
 
   const dispatch = useDispatch();
-  const { value: savedValue, status } = useSelector((state: RootState) => state.form);
+  
+  const current = useSelector(formSelector);
+  const saveValueAction = useSelector(saveValueActionSelector)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -30,7 +34,7 @@ const FormComponent: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    dispatch(saveValue(formData));
+    dispatch(saveValue.start(formData));
   };
 
   return (
@@ -94,9 +98,9 @@ const FormComponent: React.FC = () => {
           Guardar
         </Button>
       </form>
-      {status === 'loading' && <p>Saving...</p>}
-      {status === 'succeeded' && savedValue && (
-        <p>Saved Value: {JSON.stringify(savedValue)}</p>
+      {saveValueAction.status === ActionStatus.START && <p>Saving...</p>}
+      {saveValueAction.status === ActionStatus.SUCCESS && current && (
+        <p>Saved Value: {JSON.stringify(current)}</p>
       )}
       <ListDB />
     </Container>

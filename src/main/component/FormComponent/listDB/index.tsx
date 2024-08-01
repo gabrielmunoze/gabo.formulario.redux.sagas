@@ -2,11 +2,11 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { List, ListItem, ListItemText, Paper, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { RootState } from './store';
+import { itemsSelector } from '../store/selectors';
 
 const ListDB: React.FC = () => {
     const dispatch = useDispatch();
-    const items = useSelector((state: RootState) => state.items);
+    const items = useSelector(itemsSelector);
 
     const handleDeleteItem = (id: string) => {
         // coso para borrar

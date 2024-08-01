@@ -1,5 +1,6 @@
 import { openDB } from 'idb';
-import { FormData } from './main/store/types';
+import { FormDataModel } from './main/component/FormComponent/store/types';
+
 
 const dbPromise = openDB('MyDatabase', 1, {
   upgrade(db) {
@@ -9,7 +10,7 @@ const dbPromise = openDB('MyDatabase', 1, {
   },
 });
 
-export async function addValue(formData: FormData): Promise<void> {
+export async function addValue(formData: FormDataModel): Promise<void> {
   const db = await dbPromise;
   const tx = db.transaction('formStore', 'readwrite');
   const store = tx.objectStore('formStore');
@@ -17,7 +18,7 @@ export async function addValue(formData: FormData): Promise<void> {
   await tx.done;
 }
 
-export async function getAllValues(): Promise<FormData[]> {
+export async function getAllValues(): Promise<FormDataModel[]> {
   const db = await dbPromise;
   const tx = db.transaction('formStore', 'readonly');
   const store = tx.objectStore('formStore');
