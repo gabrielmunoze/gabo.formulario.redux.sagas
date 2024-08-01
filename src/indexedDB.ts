@@ -25,3 +25,13 @@ export async function getAllValues(): Promise<FormData[]> {
   await tx.done;
   return allValues;
 }
+
+export const getItems = async () => {
+  const db = await dbPromise;
+  return await db.getAll('formStore');
+};
+
+export const deleteItem = async (id:any) => {
+  const db = await dbPromise;
+  await db.delete('formStore', id);
+};

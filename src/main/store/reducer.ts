@@ -3,10 +3,6 @@ import { createAction, createReducer, PayloadAction } from '@reduxjs/toolkit';
 import { FormData, FormState } from './types';
 import { saveValue, saveValueSuccess } from './actions';
 
-
-// export const saveValue = createAction<FormData>('SAVE_VALUE');
-// export const saveValueSuccess = createAction<FormData>('SAVE_VALUE_SUCCESS');
-
 const initialFormState: FormState = {
   value: null,
   status: 'idle',
@@ -24,7 +20,7 @@ const formReducer = createReducer(initialFormState, (builder) => {
 });
 
 const rootReducer = combineReducers({
-  form: formReducer,
+  form: formReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

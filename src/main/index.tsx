@@ -1,12 +1,13 @@
-// src/FormComponent.tsx
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TextField, Button, Container } from '@mui/material';
 import { saveValue } from './store/actions';
 import { RootState } from './store';
 import { FormData } from './store/types';
+import  ListDB  from './component/listDB'
 
 const FormComponent: React.FC = () => {
+  
   const [formData, setFormData] = useState<FormData>({
     nombre: '',
     apellido: '',
@@ -97,6 +98,7 @@ const FormComponent: React.FC = () => {
       {status === 'succeeded' && savedValue && (
         <p>Saved Value: {JSON.stringify(savedValue)}</p>
       )}
+      <ListDB />
     </Container>
   );
 };

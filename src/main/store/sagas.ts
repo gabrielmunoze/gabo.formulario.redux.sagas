@@ -1,6 +1,6 @@
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { saveValue } from './actions';
-import { saveValueSuccess } from './reducer';
+import { saveValueSuccess } from './actions';
 import { addValue } from '../../indexedDB';
 import { FormData } from './types';
 
