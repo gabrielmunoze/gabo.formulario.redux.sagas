@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { List, ListItem, ListItemText, Paper, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { itemsSelector } from '../store/selectors';
+import { fetchItemsActionSelector, itemsSelector } from '../store/selectors';
+import { ActionStatus } from '../../../../store';
+import { deleteItemRequest, fetchItems } from '../store/actions';
 
 const ListDB: React.FC = () => {
     const dispatch = useDispatch();
     const items = useSelector(itemsSelector);
 
-    const handleDeleteItem = (id: string) => {
+    const fetchItemsAction = useSelector(fetchItemsActionSelector)
+
+    useEffect(() => {
+        if (fetchItemsAction.status === ActionStatus.DEFAULT) {
+            dispatch(fetchItems.start())
+        }
+    }, [fetchItemsAction]);
+
+    const handleDeleteItem = (id:any) => {
         // coso para borrar
+        console.log(id)
+        dispatch(deleteItemRequest.start(id))
     };
 
     return (

@@ -33,7 +33,7 @@ const FormComponent: React.FC = () => {
   };
 
   const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
+    // event.preventDefault();
     dispatch(saveValue.start(formData));
   };
 
@@ -98,10 +98,10 @@ const FormComponent: React.FC = () => {
           Guardar
         </Button>
       </form>
-      {saveValueAction.status === ActionStatus.START && <p>Saving...</p>}
+      {/* {saveValueAction.status === ActionStatus.START && <p>Saving...</p>}
       {saveValueAction.status === ActionStatus.SUCCESS && current && (
         <p>Saved Value: {JSON.stringify(current)}</p>
-      )}
+      )} */}
       <ListDB />
     </Container>
   );

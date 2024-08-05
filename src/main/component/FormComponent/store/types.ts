@@ -7,3 +7,6 @@ export interface FormDataModel {
   telefono: string;
 }
 
+export interface id{
+  id: string
+}

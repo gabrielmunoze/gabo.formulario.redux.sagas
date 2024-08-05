@@ -9,7 +9,7 @@ type BaseState = {
 }
 
 export const formSelector = (state: BaseState): FormDataModel | null => state.web.form.current;
-export const itemsSelector = (state: BaseState): [] => state.web.form.items;
+export const itemsSelector = (state: BaseState): FormDataModel[] => state.web.form.items;
 
 export const saveValueActionSelector = (state: BaseState): ActionTracer => state.web.form.actions.saveValue;
 export const fetchItemsActionSelector = (state: BaseState): ActionTracer => state.web.form.actions.fetchItems;
