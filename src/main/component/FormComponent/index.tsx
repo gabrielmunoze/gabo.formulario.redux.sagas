@@ -33,7 +33,7 @@ const FormComponent: React.FC = () => {
   };
 
   const handleSubmit = (event: React.FormEvent) => {
-    // event.preventDefault();
+    event.preventDefault();
     dispatch(saveValue.start(formData));
   };
 
